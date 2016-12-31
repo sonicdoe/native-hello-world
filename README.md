@@ -24,6 +24,8 @@ helloWorld()
 
 This project follows [Semantic Versioning 2](http://semver.org/).
 
+- v1.0.0 (2016-12-31): Initial release
+
 ## License
 
 `native-hello-world` itself is unlicensed.
