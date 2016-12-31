@@ -12,5 +12,8 @@
   ],
   "license": "Unlicense",
   "author": "Jakob Krigovsky <jakob@krigovsky.com>",
-  "repository": "sonicdoe/native-hello-world"
+  "repository": "sonicdoe/native-hello-world",
+  "dependencies": {
+    "nan": "^2.5.0"
+  }
 }
