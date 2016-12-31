@@ -1,0 +1,16 @@
+{
+  "name": "native-hello-world",
+  "version": "1.0.0",
+  "description": "A native “Hello, world!” addon, useful for testing.",
+  "keywords": [
+    "hello",
+    "world",
+    "native",
+    "addon",
+    "c",
+    "c++"
+  ],
+  "license": "Unlicense",
+  "author": "Jakob Krigovsky <jakob@krigovsky.com>",
+  "repository": "sonicdoe/native-hello-world"
+}
