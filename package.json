@@ -1,0 +1,28 @@
+{
+  "name": "native-hello-world",
+  "version": "1.0.0",
+  "description": "A native “Hello, world!” addon, useful for testing.",
+  "keywords": [
+    "hello",
+    "world",
+    "native",
+    "addon",
+    "c",
+    "c++"
+  ],
+  "license": "Unlicense",
+  "author": "Jakob Krigovsky <jakob@krigovsky.com>",
+  "files": [
+    "addon.cpp",
+    "binding.gyp",
+    "index.js"
+  ],
+  "repository": "sonicdoe/native-hello-world",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "bindings": "^1.2.1",
+    "nan": "^2.5.0"
+  }
+}
