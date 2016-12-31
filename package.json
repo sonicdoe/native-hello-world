@@ -13,6 +13,9 @@
   "license": "Unlicense",
   "author": "Jakob Krigovsky <jakob@krigovsky.com>",
   "repository": "sonicdoe/native-hello-world",
+  "scripts": {
+    "test": "node test.js"
+  },
   "dependencies": {
     "bindings": "^1.2.1",
     "nan": "^2.5.0"
