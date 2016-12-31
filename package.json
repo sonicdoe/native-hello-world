@@ -12,6 +12,11 @@
   ],
   "license": "Unlicense",
   "author": "Jakob Krigovsky <jakob@krigovsky.com>",
+  "files": [
+    "addon.cpp",
+    "binding.gyp",
+    "index.js"
+  ],
   "repository": "sonicdoe/native-hello-world",
   "scripts": {
     "test": "node test.js"
