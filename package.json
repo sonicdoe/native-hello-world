@@ -1,7 +1,7 @@
 {
   "name": "native-hello-world",
   "version": "1.0.0",
-  "description": "A native “Hello, world!” addon, useful for testing.",
+  "description": "Native “Hello, world!” addon, useful for testing",
   "keywords": [
     "hello",
     "world",

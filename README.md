@@ -3,7 +3,7 @@
 [![Node.js package](https://img.shields.io/npm/v/native-hello-world.svg)](https://www.npmjs.com/package/native-hello-world)
 [![Build status](https://img.shields.io/travis/sonicdoe/native-hello-world/develop.svg)](https://travis-ci.org/sonicdoe/native-hello-world)
 
-> A native “Hello, world!” addon, useful for testing.
+> Native “Hello, world!” addon, useful for testing
 
 ## Installation
 
