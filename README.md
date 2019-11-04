@@ -21,6 +21,9 @@ helloWorld()
 
 This project follows [Semantic Versioning 2](https://semver.org).
 
+- v2.0.0 (2019-11-04):
+  - Fix build error with Node.js v12
+  - Drop support for Node.js v8 and earlier
 - v1.0.0 (2016-12-31): Initial release
 
 ## License
