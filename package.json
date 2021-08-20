@@ -1,5 +1,5 @@
 {
-  "name": "native-hello-world",
+  "name": "@bn3t/native-hello-world",
   "version": "2.0.0",
   "description": "Native “Hello, world!” addon, useful for testing",
   "keywords": [
@@ -11,13 +11,13 @@
     "c++"
   ],
   "license": "Unlicense",
-  "author": "Jakob Krigovsky <jakob@krigovsky.com>",
+  "author": "Bernard Niset",
   "files": [
     "addon.cpp",
     "binding.gyp",
     "index.js"
   ],
-  "repository": "sonicdoe/native-hello-world",
+  "repository": "bn3t/native-hello-world",
   "scripts": {
     "test": "node test.js"
   },
