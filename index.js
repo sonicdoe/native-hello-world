@@ -1,1 +1,3 @@
-module.exports = require('bindings')('hello_world')
+var binding = require('node-gyp-build')(__dirname)
+
+module.exports = binding
