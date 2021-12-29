@@ -1,6 +1,6 @@
 {
   "name": "@bn3t/native-hello-world",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Native “Hello, world!” addon, useful for testing - scoped package",
   "keywords": [
     "hello",
@@ -23,8 +23,7 @@
   "scripts": {
     "install": "node-gyp-build",
     "test": "node test.js",
-    "build": "npm run build:ia32 && npm run build:x64",
-    "build:ia32": "prebuildify --napi --target node@12.0.0 --arch ia32",
+    "build": "npm run build:x64",
     "build:x64": "prebuildify --napi --target node@12.0.0 --arch x64"
   },
   "dependencies": {

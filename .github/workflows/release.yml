@@ -1,0 +1,87 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            build-group: linux-x64
+          # At the time of writing macos-latest is mac 10; we need 11 to build a universal binary.
+          - os: macos-11
+            build-group: darwin-x64+arm64
+          - os: windows-latest
+            build-group: win32-x64
+    runs-on: ${{ matrix.os }}
+    name: Build ${{ matrix.build-group }}
+    env:
+      BUILD_GROUP: ${{ matrix.build-group }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Set up node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          architecture: x64
+      - name: Install
+        run: npm ci
+      - name: Prebuild
+        run: npm run build
+        shell: bash
+      - name: Prepare artifact
+        run: tar -zcvf $BUILD_GROUP.tar.gz -C prebuilds .
+        shell: bash
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.BUILD_GROUP }}
+          path: ${{ env.BUILD_GROUP }}.tar.gz
+          retention-days: 1
+  release:
+    needs: build
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    name: Release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+      - name: Untar
+        run: |
+          mkdir prebuilds
+          tar xvfz artifacts/linux-x64/linux-x64.tar.gz -C prebuilds
+          tar xvfz artifacts/darwin-x64+arm64/darwin-x64+arm64.tar.gz -C prebuilds
+          tar xvfz artifacts/win32-x64/win32-x64.tar.gz -C prebuilds
+        shell: bash
+      - name: Verify
+        run: ls -R
+        shell: bash
+      # Publish to npm if this version is not published
+      - name: Publish
+        run: |
+          npx can-npm-publish --verbose && npm publish || echo "Does not publish"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Push tag to GitHub if the version's tag is not tagged
+      - name: package-version
+        run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
+      - name: package-version-to-git-tag
+        uses: pkgdeps/git-tag-action@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_repo: ${{ github.repository }}
+          version: ${{ env.PACKAGE_VERSION }}
+          git_commit_sha: ${{ github.sha }}
+          git_tag_prefix: "v"
